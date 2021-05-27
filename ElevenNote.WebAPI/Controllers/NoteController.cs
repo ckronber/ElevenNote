@@ -1,4 +1,5 @@
-﻿using ElevenNote.Models;
+﻿using ElevenNote.Data;
+using ElevenNote.Models;
 using ElevenNote.Services;
 using Microsoft.AspNet.Identity;
 using System;
@@ -16,9 +17,30 @@ namespace ElevenNote.WebAPI.Controllers
         public IHttpActionResult Get()
         {
             NoteService noteService = CreateNoteService();
-            var notes = noteService.GetNotes();
-            return Ok(notes);
+            var note = noteService.GetNotes();
+            return Ok(note);
         }
+
+        public IHttpActionResult GetNoteById(int id)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                    .Notes
+                    .Single(e => e.NoteId == id && e.OwnerId == _userId);
+                return
+                    new NoteDetail
+                    {
+                        NoteId = entity.NoteId,
+                        Title = entity.Title,
+                        Content = entity.Content,
+                        CreatedUtc = entity.CreatedUtc,
+                        ModifiedUtc = entity.ModifiedUtc
+                    };
+            }
+        }
+
 
         public IHttpActionResult Post(NoteCreate note)
         {
@@ -33,6 +55,7 @@ namespace ElevenNote.WebAPI.Controllers
             return Ok();
         }
 
+      
         private NoteService CreateNoteService()
         {
             var userId = Guid.Parse(User.Identity.GetUserId());
