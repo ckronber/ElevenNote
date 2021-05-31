@@ -1,5 +1,6 @@
 ﻿using ElevenNote.Data;
 using ElevenNote.Models;
+using System.Collections;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,17 +29,12 @@ namespace ElevenNote.Services
         {
             using (var ctx = new ApplicationDbContext())
             {
-                var query =
-                    ctx
-                        .Categories
-                        .Select(
-                        e =>
-                            new CategoryListItem
-                            {
-                                Name = e.Name
-                            }
-                       );
-
+                var query = ctx.Categories.Select(e => new CategoryListItem()
+                { 
+                    CatId = e.CatId,
+                    Name = e.Name
+                });
+                
                 return query.ToArray();
             }
         }
@@ -47,15 +43,12 @@ namespace ElevenNote.Services
         {
             using (var ctx = new ApplicationDbContext())
             {
-                var entity =
-                    ctx
-                    .Categories
-                    .Single(e =>  e.CatId == id);
-                return
-                    new CategoryListItem
-                    {
-                        Name = entity.Name
-                    };
+                var entity = ctx.Categories.Single(e => e.CatId == id);
+
+                return new CategoryListItem() {
+                    CatId = entity.CatId,
+                    Name = entity.Name
+                };
             }
         }
 

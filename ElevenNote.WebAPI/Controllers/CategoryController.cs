@@ -13,8 +13,9 @@ namespace ElevenNote.WebAPI.Controllers
     {
         public IHttpActionResult Get()
         {
-            var category = CreateCategory();
-            return Ok(category);
+            CategoryService category = CreateCategory();
+            var cat = category.GetCategories();
+            return Ok(cat);
         }
 
         public IHttpActionResult Get(int id)
@@ -34,7 +35,7 @@ namespace ElevenNote.WebAPI.Controllers
             if (!service.CreateCategory(category))
                 return InternalServerError();
 
-            return Ok();
+            return Ok(service);
         }
 
         public IHttpActionResult Put(CategoryEdit category)
@@ -47,7 +48,7 @@ namespace ElevenNote.WebAPI.Controllers
             if (!service.UpdateCategory(category))
                 return InternalServerError();
 
-            return Ok();
+            return Ok(service);
         }
 
         public IHttpActionResult Delete(int id)

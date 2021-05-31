@@ -11,7 +11,7 @@ namespace ElevenNote.Data
     public class Category
     {
         [Key]
-        public int? CatId { get; set; }
+        public int CatId { get; set; }
         public string Name { get; set; }
        // public int NoteId { get; set; }
        // [ForeignKey(nameof(NoteId))]
