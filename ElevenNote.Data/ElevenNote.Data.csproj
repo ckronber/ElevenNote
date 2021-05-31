@@ -97,6 +97,10 @@
     <Compile Include="Migrations\202105302258446_Database with Category Database Updated.designer.cs">
       <DependentUpon>202105302258446_Database with Category Database Updated.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202105310235474_Starred was added, Need to Update Database.cs" />
+    <Compile Include="Migrations\202105310235474_Starred was added, Need to Update Database.designer.cs">
+      <DependentUpon>202105310235474_Starred was added, Need to Update Database.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Note.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -111,6 +115,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202105302258446_Database with Category Database Updated.resx">
       <DependentUpon>202105302258446_Database with Category Database Updated.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202105310235474_Starred was added, Need to Update Database.resx">
+      <DependentUpon>202105310235474_Starred was added, Need to Update Database.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

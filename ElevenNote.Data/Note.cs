@@ -15,6 +15,7 @@ namespace ElevenNote.Data
         public int NoteId { get; set; }
         [Required]
         public Guid OwnerId { get; set; }
+        public bool? IsStarred { get; set; }
         public int? CategoryId { get; set; }
         [ForeignKey(nameof(CategoryId))]
         public virtual Category categoryClass { get; set; }
