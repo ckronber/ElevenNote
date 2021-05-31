@@ -32,7 +32,7 @@ namespace ElevenNote.Services
             using (var ctx = new ApplicationDbContext())
             {
                 ctx.Notes.Add(entity);
-                return ctx.SaveChanges() == 1;
+                return ctx.SaveChanges() >= 1;
             }
         }
 
@@ -55,6 +55,29 @@ namespace ElevenNote.Services
                                 CreatedUtc = e.CreatedUtc
                             }
                         ) ;
+                return query.ToArray();
+            }
+        }
+
+        public IEnumerable<NoteListItem> GetStarred()
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var query =
+                    ctx
+                        .Notes
+                        .Where(e => e.OwnerId == _userId && e.IsStarred == true)
+                        .Select(
+                        e =>
+                            new NoteListItem
+                            {
+                                NoteId = e.NoteId,
+                                Title = e.Title,
+                                IsStarred = e.IsStarred,
+                                category = e.categoryClass,
+                                CreatedUtc = e.CreatedUtc
+                            }
+                        );
                 return query.ToArray();
             }
         }

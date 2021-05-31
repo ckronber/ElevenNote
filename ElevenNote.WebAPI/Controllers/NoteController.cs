@@ -21,6 +21,14 @@ namespace ElevenNote.WebAPI.Controllers
             return Ok(note);
         }
 
+        [HttpGet, Route("api/Note/getStarred")]
+        public IHttpActionResult GetStarred()
+        {
+            NoteService noteService = CreateNoteService();
+            var note = noteService.GetStarred();
+            return Ok(note);
+        }
+
         public IHttpActionResult Get(int id)
         {
             NoteService noteService = CreateNoteService();
