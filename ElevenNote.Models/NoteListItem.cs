@@ -11,11 +11,10 @@ namespace ElevenNote.Models
     public class NoteListItem
     {
         public int NoteId { get; set; }
-
-        public virtual Category category { get; set; }
-        public bool? IsStarred { get; set; }
+        public int? CategoryId { get; set; }
+        public bool IsStarred { get; set; }
         public string Title { get; set; }
-        [Display(Name = "Created")]
+        [Display(Name = "Created")] 
         public DateTimeOffset CreatedUtc { get; set; }
     }
 

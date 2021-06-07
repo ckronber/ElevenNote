@@ -13,39 +13,39 @@ namespace ElevenNote.WebAPI.Controllers
     {
         public IHttpActionResult Get()
         {
-            CategoryService category = CreateCategory();
-            var cat = category.GetCategories();
+            CategoryService Category = CreateCategory();
+            var cat = Category.GetCategories();
             return Ok(cat);
         }
 
         public IHttpActionResult Get(int id)
         {
-            var categoryService = CreateCategory();
-            var cat = categoryService.GetCategoryById(id);
+            var CategoryService = CreateCategory();
+            var cat = CategoryService.GetCategoryById(id);
             return Ok(cat);
         }
 
-        public IHttpActionResult Post(CategoryCreate category)
+        public IHttpActionResult Post(CategoryCreate Category)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
             var service = CreateCategory();
 
-            if (!service.CreateCategory(category))
+            if (!service.CreateCategory(Category))
                 return InternalServerError();
 
             return Ok(service);
         }
 
-        public IHttpActionResult Put(CategoryEdit category)
+        public IHttpActionResult Put(CategoryEdit Category)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
             var service = CreateCategory();
 
-            if (!service.UpdateCategory(category))
+            if (!service.UpdateCategory(Category))
                 return InternalServerError();
 
             return Ok(service);

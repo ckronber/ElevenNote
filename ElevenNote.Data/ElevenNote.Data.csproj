@@ -67,6 +67,7 @@
     <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
       <HintPath>..\ElevenNote.WebAPI\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
     </Reference>
+    <Reference Include="PresentationFramework" />
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
@@ -89,17 +90,9 @@
   <ItemGroup>
     <Compile Include="Category.cs" />
     <Compile Include="IdentityModels.cs" />
-    <Compile Include="Migrations\202105271543494_InitialCreate.cs" />
-    <Compile Include="Migrations\202105271543494_InitialCreate.designer.cs">
-      <DependentUpon>202105271543494_InitialCreate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202105302258446_Database with Category Database Updated.cs" />
-    <Compile Include="Migrations\202105302258446_Database with Category Database Updated.designer.cs">
-      <DependentUpon>202105302258446_Database with Category Database Updated.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202105310235474_Starred was added, Need to Update Database.cs" />
-    <Compile Include="Migrations\202105310235474_Starred was added, Need to Update Database.designer.cs">
-      <DependentUpon>202105310235474_Starred was added, Need to Update Database.cs</DependentUpon>
+    <Compile Include="Migrations\202106060706065_FirstMigration.cs" />
+    <Compile Include="Migrations\202106060706065_FirstMigration.designer.cs">
+      <DependentUpon>202106060706065_FirstMigration.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Note.cs" />
@@ -110,14 +103,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202105271543494_InitialCreate.resx">
-      <DependentUpon>202105271543494_InitialCreate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202105302258446_Database with Category Database Updated.resx">
-      <DependentUpon>202105302258446_Database with Category Database Updated.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202105310235474_Starred was added, Need to Update Database.resx">
-      <DependentUpon>202105310235474_Starred was added, Need to Update Database.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202106060706065_FirstMigration.resx">
+      <DependentUpon>202106060706065_FirstMigration.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

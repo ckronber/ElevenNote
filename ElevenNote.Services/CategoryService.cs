@@ -11,11 +11,11 @@ namespace ElevenNote.Services
 {
     public class CategoryService
     {
-        public bool CreateCategory(CategoryCreate category)
+        public bool CreateCategory(CategoryCreate Category)
         {
             var entity = new Category()
             {
-                Name = category.Name
+                Name = Category.Name
             };
 
             using (var ctx = new ApplicationDbContext())
@@ -39,15 +39,22 @@ namespace ElevenNote.Services
             }
         }
 
-        public CategoryListItem GetCategoryById(int id)
+        public CategoryDetail GetCategoryById(int id)
         {
             using (var ctx = new ApplicationDbContext())
             {
                 var entity = ctx.Categories.Single(e => e.CatId == id);
 
-                return new CategoryListItem() {
+                return new CategoryDetail() {
                     CatId = entity.CatId,
-                    Name = entity.Name
+                    Name = entity.Name,
+                    Notes = entity.Notes.Select(e => new NoteListItem()
+                    {
+                        NoteId = e.NoteId,
+                        Title = e.Title,
+                        CreatedUtc = e.CreatedUtc
+
+                    }).ToList()
                 };
             }
         }

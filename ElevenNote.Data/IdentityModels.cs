@@ -34,6 +34,13 @@ namespace ElevenNote.Data
 
         public DbSet<Note> Notes { get; set; }
         public DbSet<Category> Categories { get; set; }
+
+        //public DbSet<CoffeeShop> CoffeeShops { get; set; }
+        //public DbSet<Menu> Menus { get; set; }
+        //public DbSet<CoffeeOrder> CoffeeOrders { get; set; }
+        //public DbSet<Addition> Additions { get; set; }
+        //public DbSet<Customer> Customers { get; set; }
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder
@@ -62,6 +69,4 @@ namespace ElevenNote.Data
             HasKey(iur => iur.UserId);
         }
     }
-
-
 }

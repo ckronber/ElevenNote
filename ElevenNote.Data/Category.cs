@@ -5,6 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace ElevenNote.Data
 {
@@ -12,9 +13,8 @@ namespace ElevenNote.Data
     {
         [Key]
         public int CatId { get; set; }
+        [Required]
         public string Name { get; set; }
-       // public int NoteId { get; set; }
-       // [ForeignKey(nameof(NoteId))]
-       // public virtual Note Note { get; set; }
+        public virtual List<Note> Notes { get; set; }
     }
 }
